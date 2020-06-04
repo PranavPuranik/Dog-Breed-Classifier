@@ -1,21 +1,34 @@
-[//]: # (Image References)
-
-[image1]: ./images/sample_dog_output.png "Sample Output"
-[image2]: ./images/vgg16_model.png "VGG-16 Model Keras Layers"
-[image3]: ./images/vgg16_model_draw.png "VGG16 Model Figure"
-
-
 ## Project Overview
 
-Welcome to the Convolutional Neural Networks (CNN) project in the AI Nanodegree! In this project, you will learn how to build a pipeline that can be used within a web or mobile app to process real-world, user-supplied images.  Given an image of a dog, your algorithm will identify an estimate of the canine’s breed.  If supplied an image of a human, the code will identify the resembling dog breed.  
+A simple CNN classifier to differentiate dog breeds, uses InceptionV3 pretrained weights
 
-![Sample Output][image1]
+![Sample Output](images/sample_dog_output.png)
 
-Along with exploring state-of-the-art CNN models for classification, you will make important design decisions about the user experience for your app.  Our goal is that by completing this lab, you understand the challenges involved in piecing together a series of models designed to perform various tasks in a data processing pipeline.  Each model has its strengths and weaknesses, and engineering a real-world application often involves solving many problems without a perfect answer.  Your imperfect solution will nonetheless create a fun user experience!
+The dataset contains 8351 dog images of 133 breeds. The problem statements requires use to design an algorithm that predicts whether an image contains a human or dog, and predict it's breed (even if it's a human!). 
 
-## Project Instructions
 
-### Instructions
+### Table of Contents
+
+1. [Requirements](#reqirements)
+2. [Installation](#installation)
+3. [File Descriptions](#files)
+4. [Results](#results)
+5. [Acknowledgements](#ack)
+
+### Requirements <a name="reqirements"></a>
+Python3 and the following libraries: 
+* opencv-python
+* h5py
+* matplotlib
+* numpy
+* scipy
+* tqdm
+* scikit-learn
+* keras
+* tensorflow
+* jupyterlabs
+
+### Installation <a name="installation"></a>
 
 1. Clone the repository and navigate to the downloaded folder.
 ```	
@@ -98,19 +111,23 @@ python -m ipykernel install --user --name dog-project --display-name "dog-projec
 jupyter notebook dog_app.ipynb
 ```
 
-12. (Optional) **If you are running the project on your local machine (and not using AWS)**, before running code, change the kernel to match the dog-project environment by using the drop-down menu (**Kernel > Change kernel > dog-project**). Then, follow the instructions in the notebook.
 
-__NOTE:__ While some code has already been implemented to get you started, you will need to implement additional functionality to successfully answer all of the questions included in the notebook. __Unless requested, do not modify code that has already been included.__
+### File Descriptions <a name="files"></a>
 
-## Evaluation
+Some important files used in the project include:
+1. haarcascades/haarcascade_frontalface_alt.xml: Viola-Jones face detector provided by OpenCV.
+2. saved_models/weights.best.InceptionV3.hdf5: Inception v3 model trained using transfer learning.
+3. dog_app.ipynb: a notebook that explains the classifier code.
+4. extract_bottleneck_features.py: functions to compute bottleneck features of image
+5. images/: contains few random images
 
-Your project will be reviewed by a Udacity reviewer against the CNN project [rubric](https://review.udacity.com/#!/rubrics/810/view).  Review this rubric thoroughly, and self-evaluate your project before submission.  All criteria found in the rubric must meet specifications for you to pass.
+### Results <a name="results"></a>
 
-## Project Submission
+1. saved_models/weights.best.from_scratch.hdf5: 2.2727%
+2. saved_models/weights.best.VGG16.hdf5: 40.7895%
+3. saved_models/weights.best.InceptionV3.hdf5: 83.4928%
 
-When you are ready to submit your project, collect the following files and compress them into a single archive for upload:
-- The `dog_app.ipynb` file with fully functional code, all code cells executed and displaying output, and all questions answered.
-- An HTML or PDF export of the project notebook with the name `report.html` or `report.pdf`.
-- Any additional images used for the project that were not supplied to you for the project. __Please do not include the project data sets in the `dogImages/` or `lfw/` folders.  Likewise, please do not include the `bottleneck_features/` folder.__
+Medium article link : https://medium.com/@pranavpuranik10/dog-breed-classifier-udacity-data-science-nano-degree-program-50141e92dea2
 
-Alternatively, your submission could consist of the GitHub link to your repository.
+### Acknowledgements <a name="ack"></a>
+Thanks to Udacity's Data Science Nano Degree Program team!
