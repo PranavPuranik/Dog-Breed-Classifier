@@ -13293,6 +13293,288 @@ There are 836 test dog images.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data-Analysis">Data Analysis<a class="anchor-link" href="#Data-Analysis">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">globlist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;../../../data/dog_images/train/*/&quot;</span><span class="p">))</span>
+
+<span class="n">img_per_class</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">globlist</span><span class="p">:</span>
+    <span class="n">class_length</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">folder</span><span class="p">))</span>
+    <span class="n">img_per_class</span><span class="p">[</span><span class="n">folder</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">class_length</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">img_per_class</span><span class="p">)</span>
+
+<span class="c1"># Average number of images per class</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">img_per_class</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">img_per_class</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{&#39;Mastiff&#39;: 43, &#39;Doberman_pinscher&#39;: 53, &#39;Curly-coated_retriever&#39;: 58, &#39;Borzoi&#39;: 42, &#39;Bichon_frise&#39;: 48, &#39;Chinese_crested&#39;: 51, &#39;Finnish_spitz&#39;: 49, &#39;Welsh_springer_spaniel&#39;: 58, &#39;Bedlington_terrier&#39;: 54, &#39;Papillon&#39;: 44, &#39;Saint_bernard&#39;: 49, &#39;Australian_terrier&#39;: 54, &#39;Parson_russell_terrier&#39;: 58, &#39;Norfolk_terrier&#39;: 51, &#39;Yorkshire_terrier&#39;: 53, &#39;Boston_terrier&#39;: 50, &#39;Norwegian_buhund&#39;: 52, &#39;Bluetick_coonhound&#39;: 54, &#39;Field_spaniel&#39;: 49, &#39;Tibetan_mastiff&#39;: 51, &#39;Alaskan_malamute&#39;: 52, &#39;Manchester_terrier&#39;: 54, &#39;Boxer&#39;: 41, &#39;Flat-coated_retriever&#39;: 57, &#39;Irish_wolfhound&#39;: 51, &#39;Miniature_schnauzer&#39;: 55, &#39;Boykin_spaniel&#39;: 50, &#39;Greater_swiss_mountain_dog&#39;: 62, &#39;American_foxhound&#39;: 53, &#39;Nova_scotia_duck_tolling_retriever&#39;: 70, &#39;Black_and_tan_coonhound&#39;: 59, &#39;German_shorthaired_pointer&#39;: 62, &#39;English_setter&#39;: 50, &#39;Border_collie&#39;: 49, &#39;Cardigan_welsh_corgi&#39;: 56, &#39;Neapolitan_mastiff&#39;: 54, &#39;Golden_retriever&#39;: 52, &#39;English_springer_spaniel&#39;: 60, &#39;Great_dane&#39;: 46, &#39;Icelandic_sheepdog&#39;: 54, &#39;Bernese_mountain_dog&#39;: 56, &#39;Japanese_chin&#39;: 49, &#39;Australian_cattle_dog&#39;: 57, &#39;Belgian_sheepdog&#39;: 52, &#39;Bullmastiff&#39;: 47, &#39;Leonberger&#39;: 46, &#39;Beauceron&#39;: 45, &#39;Belgian_malinois&#39;: 52, &#39;Beagle&#39;: 42, &#39;Bull_terrier&#39;: 48, &#39;Irish_terrier&#39;: 49, &#39;English_toy_spaniel&#39;: 55, &#39;Pomeranian&#39;: 46, &#39;Lakeland_terrier&#39;: 52, &#39;Silky_terrier&#39;: 49, &#39;Pharaoh_hound&#39;: 49, &#39;American_eskimo_dog&#39;: 55, &#39;Australian_shepherd&#39;: 55, &#39;German_pinscher&#39;: 51, &#39;Kuvasz&#39;: 42, &#39;Wirehaired_pointing_griffon&#39;: 63, &#39;Portuguese_water_dog&#39;: 56, &#39;German_shepherd_dog&#39;: 55, &#39;Airedale_terrier&#39;: 52, &#39;Canaan_dog&#39;: 46, &#39;Pembroke_welsh_corgi&#39;: 56, &#39;Anatolian_shepherd_dog&#39;: 58, &#39;Bouvier_des_flandres&#39;: 56, &#39;Newfoundland&#39;: 48, &#39;Chesapeake_bay_retriever&#39;: 60, &#39;American_water_spaniel&#39;: 58, &#39;Entlebucher_mountain_dog&#39;: 60, &#39;Afghan_hound&#39;: 48, &#39;Collie&#39;: 42, &#39;Kerry_blue_terrier&#39;: 54, &#39;English_cocker_spaniel&#39;: 58, &#39;Havanese&#39;: 44, &#39;Cane_corso&#39;: 46, &#39;Dachshund&#39;: 45, &#39;Black_russian_terrier&#39;: 57, &#39;Xoloitzcuintli&#39;: 50, &#39;Komondor&#39;: 44, &#39;Belgian_tervuren&#39;: 52, &#39;Otterhound&#39;: 46, &#39;Briard&#39;: 42, &#39;Giant_schnauzer&#39;: 51, &#39;Bearded_collie&#39;: 50, &#39;Norwegian_lundehund&#39;: 55, &#39;Irish_red_and_white_setter&#39;: 62, &#39;French_bulldog&#39;: 50, &#39;Glen_of_imaal_terrier&#39;: 57, &#39;Cairn_terrier&#39;: 49, &#39;Akita&#39;: 41, &#39;Dogue_de_bordeaux&#39;: 53, &#39;Smooth_fox_terrier&#39;: 54, &#39;Ibizan_hound&#39;: 48, &#39;Pekingese&#39;: 45, &#39;Greyhound&#39;: 45, &#39;Chow_chow&#39;: 45, &#39;Bulldog&#39;: 43, &#39;American_staffordshire_terrier&#39;: 66, &#39;Cavalier_king_charles_spaniel&#39;: 65, &#39;Lhasa_apso&#39;: 46, &#39;Italian_greyhound&#39;: 53, &#39;Chinese_shar-pei&#39;: 52, &#39;Irish_setter&#39;: 48, &#39;Brittany&#39;: 44, &#39;Plott&#39;: 41, &#39;Basenji&#39;: 43, &#39;Border_terrier&#39;: 50, &#39;Great_pyrenees&#39;: 50, &#39;Labrador_retriever&#39;: 54, &#39;Bloodhound&#39;: 46, &#39;Chihuahua&#39;: 45, &#39;Petit_basset_griffon_vendeen&#39;: 64, &#39;Poodle&#39;: 42, &#39;Dandie_dinmont_terrier&#39;: 58, &#39;Clumber_spaniel&#39;: 51, &#39;Brussels_griffon&#39;: 52, &#39;Old_english_sheepdog&#39;: 56, &#39;Dalmatian&#39;: 45, &#39;Cocker_spaniel&#39;: 50, &#39;Pointer&#39;: 43, &#39;Gordon_setter&#39;: 49, &#39;German_wirehaired_pointer&#39;: 61, &#39;Irish_water_spaniel&#39;: 55, &#39;Norwich_terrier&#39;: 51, &#39;Norwegian_elkhound&#39;: 54, &#39;Affenpinscher&#39;: 49, &#39;Basset_hound&#39;: 48, &#39;Maltese&#39;: 43, &#39;Keeshond&#39;: 44, &#39;Lowchen&#39;: 43}
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>&lt;matplotlib.figure.Figure at 0x7fe4ab2173c8&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">{:&lt;8}</span><span class="s1"> </span><span class="si">{:&lt;15}</span><span class="s1"> </span><span class="si">{:&lt;10}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Key&#39;</span><span class="p">,</span><span class="s1">&#39;Label&#39;</span><span class="p">,</span><span class="s1">&#39;Number&#39;</span><span class="p">))</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">img_per_class</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&lt;8}</span><span class="s2"> </span><span class="si">{:&lt;35}</span><span class="s2"> </span><span class="si">{:&lt;10}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Key      Label           Number    
+1        Mastiff                             43        
+2        Doberman_pinscher                   53        
+3        Curly-coated_retriever              58        
+4        Borzoi                              42        
+5        Bichon_frise                        48        
+6        Chinese_crested                     51        
+7        Finnish_spitz                       49        
+8        Welsh_springer_spaniel              58        
+9        Bedlington_terrier                  54        
+10       Papillon                            44        
+11       Saint_bernard                       49        
+12       Australian_terrier                  54        
+13       Parson_russell_terrier              58        
+14       Norfolk_terrier                     51        
+15       Yorkshire_terrier                   53        
+16       Boston_terrier                      50        
+17       Norwegian_buhund                    52        
+18       Bluetick_coonhound                  54        
+19       Field_spaniel                       49        
+20       Tibetan_mastiff                     51        
+21       Alaskan_malamute                    52        
+22       Manchester_terrier                  54        
+23       Boxer                               41        
+24       Flat-coated_retriever               57        
+25       Irish_wolfhound                     51        
+26       Miniature_schnauzer                 55        
+27       Boykin_spaniel                      50        
+28       Greater_swiss_mountain_dog          62        
+29       American_foxhound                   53        
+30       Nova_scotia_duck_tolling_retriever  70        
+31       Black_and_tan_coonhound             59        
+32       German_shorthaired_pointer          62        
+33       English_setter                      50        
+34       Border_collie                       49        
+35       Cardigan_welsh_corgi                56        
+36       Neapolitan_mastiff                  54        
+37       Golden_retriever                    52        
+38       English_springer_spaniel            60        
+39       Great_dane                          46        
+40       Icelandic_sheepdog                  54        
+41       Bernese_mountain_dog                56        
+42       Japanese_chin                       49        
+43       Australian_cattle_dog               57        
+44       Belgian_sheepdog                    52        
+45       Bullmastiff                         47        
+46       Leonberger                          46        
+47       Beauceron                           45        
+48       Belgian_malinois                    52        
+49       Beagle                              42        
+50       Bull_terrier                        48        
+51       Irish_terrier                       49        
+52       English_toy_spaniel                 55        
+53       Pomeranian                          46        
+54       Lakeland_terrier                    52        
+55       Silky_terrier                       49        
+56       Pharaoh_hound                       49        
+57       American_eskimo_dog                 55        
+58       Australian_shepherd                 55        
+59       German_pinscher                     51        
+60       Kuvasz                              42        
+61       Wirehaired_pointing_griffon         63        
+62       Portuguese_water_dog                56        
+63       German_shepherd_dog                 55        
+64       Airedale_terrier                    52        
+65       Canaan_dog                          46        
+66       Pembroke_welsh_corgi                56        
+67       Anatolian_shepherd_dog              58        
+68       Bouvier_des_flandres                56        
+69       Newfoundland                        48        
+70       Chesapeake_bay_retriever            60        
+71       American_water_spaniel              58        
+72       Entlebucher_mountain_dog            60        
+73       Afghan_hound                        48        
+74       Collie                              42        
+75       Kerry_blue_terrier                  54        
+76       English_cocker_spaniel              58        
+77       Havanese                            44        
+78       Cane_corso                          46        
+79       Dachshund                           45        
+80       Black_russian_terrier               57        
+81       Xoloitzcuintli                      50        
+82       Komondor                            44        
+83       Belgian_tervuren                    52        
+84       Otterhound                          46        
+85       Briard                              42        
+86       Giant_schnauzer                     51        
+87       Bearded_collie                      50        
+88       Norwegian_lundehund                 55        
+89       Irish_red_and_white_setter          62        
+90       French_bulldog                      50        
+91       Glen_of_imaal_terrier               57        
+92       Cairn_terrier                       49        
+93       Akita                               41        
+94       Dogue_de_bordeaux                   53        
+95       Smooth_fox_terrier                  54        
+96       Ibizan_hound                        48        
+97       Pekingese                           45        
+98       Greyhound                           45        
+99       Chow_chow                           45        
+100      Bulldog                             43        
+101      American_staffordshire_terrier      66        
+102      Cavalier_king_charles_spaniel       65        
+103      Lhasa_apso                          46        
+104      Italian_greyhound                   53        
+105      Chinese_shar-pei                    52        
+106      Irish_setter                        48        
+107      Brittany                            44        
+108      Plott                               41        
+109      Basenji                             43        
+110      Border_terrier                      50        
+111      Great_pyrenees                      50        
+112      Labrador_retriever                  54        
+113      Bloodhound                          46        
+114      Chihuahua                           45        
+115      Petit_basset_griffon_vendeen        64        
+116      Poodle                              42        
+117      Dandie_dinmont_terrier              58        
+118      Clumber_spaniel                     51        
+119      Brussels_griffon                    52        
+120      Old_english_sheepdog                56        
+121      Dalmatian                           45        
+122      Cocker_spaniel                      50        
+123      Pointer                             43        
+124      Gordon_setter                       49        
+125      German_wirehaired_pointer           61        
+126      Irish_water_spaniel                 55        
+127      Norwich_terrier                     51        
+128      Norwegian_elkhound                  54        
+129      Affenpinscher                       49        
+130      Basset_hound                        48        
+131      Maltese                             43        
+132      Keeshond                            44        
+133      Lowchen                             43        
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mean:&quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">img_per_class</span><span class="o">.</span><span class="n">values</span><span class="p">())))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;max:&quot;</span> <span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">img_per_class</span><span class="o">.</span><span class="n">values</span><span class="p">())))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;min:&quot;</span> <span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">img_per_class</span><span class="o">.</span><span class="n">values</span><span class="p">())))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>mean: 51.2030075188
+max: 70
+min: 41
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are 133 total dog categories. 
+There are 8351 total dog images.</p>
+<p>There are 6680 training dog images.
+There are 835 validation dog images.
+There are 836 test dog images.
+There are 13233 total human images.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 <p><a id='step1'></a></p>
 <h2 id="Step-1:-Detect-Humans">Step 1: Detect Humans<a class="anchor-link" href="#Step-1:-Detect-Humans">&#182;</a></h2><p>We use OpenCV's implementation of <a href="http://docs.opencv.org/trunk/d7/d8b/tutorial_py_face_detection.html">Haar feature-based cascade classifiers</a> to detect human faces in images.  OpenCV provides many pre-trained face detectors, stored as XML files on <a href="https://github.com/opencv/opencv/tree/master/data/haarcascades">github</a>.  We have downloaded one of these detectors and stored it in the <code>haarcascades</code> directory.</p>
@@ -13303,7 +13585,7 @@ There are 836 test dog images.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>                
@@ -13387,7 +13669,7 @@ There are 836 test dog images.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># returns &quot;True&quot; if face is detected in image stored at img_path</span>
@@ -13419,7 +13701,7 @@ There are 836 test dog images.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">human_files_short</span> <span class="o">=</span> <span class="n">human_files</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
@@ -13471,7 +13753,7 @@ There are 836 test dog images.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## (Optional) TODO: Report the performance of another  </span>
@@ -13496,7 +13778,7 @@ There are 836 test dog images.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">keras.applications.resnet50</span> <span class="k">import</span> <span class="n">ResNet50</span>
@@ -13520,7 +13802,7 @@ There are 836 test dog images.
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Downloading data from https://github.com/fchollet/deep-learning-models/releases/download/v0.2/resnet50_weights_tf_dim_ordering_tf_kernels.h5
-102858752/102853048 [==============================] - 16s 0us/step
+102858752/102853048 [==============================] - 1s 0us/step
 </pre>
 </div>
 </div>
@@ -13549,7 +13831,7 @@ $$<p>Here, <code>nb_samples</code> is the number of samples, or number of images
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">keras.preprocessing</span> <span class="k">import</span> <span class="n">image</span>                  
@@ -13585,7 +13867,7 @@ $$<p>Here, <code>nb_samples</code> is the number of samples, or number of images
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">keras.applications.resnet50</span> <span class="k">import</span> <span class="n">preprocess_input</span><span class="p">,</span> <span class="n">decode_predictions</span>
@@ -13612,7 +13894,7 @@ $$<p>Here, <code>nb_samples</code> is the number of samples, or number of images
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### returns &quot;True&quot; if a dog is detected in the image stored at img_path</span>
@@ -13641,7 +13923,7 @@ $$<p>Here, <code>nb_samples</code> is the number of samples, or number of images
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### TODO: Test the performance of the dog_detector function</span>
@@ -13734,7 +14016,7 @@ $$<p>Here, <code>nb_samples</code> is the number of samples, or number of images
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="k">import</span> <span class="n">ImageFile</span>                            
@@ -13760,9 +14042,9 @@ $$<p>Here, <code>nb_samples</code> is the number of samples, or number of images
 
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>100%|██████████| 6680/6680 [01:14&lt;00:00, 89.35it/s] 
-100%|██████████| 835/835 [00:08&lt;00:00, 99.60it/s] 
-100%|██████████| 836/836 [00:08&lt;00:00, 100.76it/s]
+<pre>100%|██████████| 6680/6680 [01:14&lt;00:00, 90.04it/s] 
+100%|██████████| 835/835 [00:10&lt;00:00, 78.34it/s]
+100%|██████████| 836/836 [00:08&lt;00:00, 95.39it/s] 
 </pre>
 </div>
 </div>
@@ -13790,7 +14072,11 @@ $$<p>Here, <code>nb_samples</code> is the number of samples, or number of images
 * After another pooling layer, the third convolutional layer with 64 filters identifies high level features.
 * The MaxPooling layer after each converlutional layer reduces the size of the representation by 50% for height and width.
 * The GlableAveragePooling layer changes the size of height and width to one, then feed it to the last dense layer.
-* The Dense layer with 133 nodes and a softmax function classifies the image into one of the 133 dog breeds.</code></pre>
+* The Dense layer with 133 nodes and a softmax function classifies the image into one of the 133 dog breeds.
+* The metrics used to improve the model is 'accuracy' - measure of how accuracte the predictions of model are to actural prediction. This is an important metrics
+    - Accuracy = (TP+TN)/(TP+FP+FN+TN)
+    - T: true, F: False, P: Positive, N: negative
+    - Accuracy tells the correct or true prediction in the data examined.</code></pre>
 
 </div>
 </div>
@@ -14406,7 +14692,12 @@ test_{network} = bottleneck_features['test']</code></pre>
 </code></pre>
 <p><strong>Question 5:</strong> Outline the steps you took to get to your final CNN architecture and your reasoning at each step.  Describe why you think the architecture is suitable for the current problem.</p>
 <p><strong>Answer:</strong></p>
-<p>It is a good practice to start with pretrained models as the weights are already close to the optimal weights required, and hence these newely developed models produce more accuracy. I decided to pool the output of InceptionV3 and add two fully connected layers because they can be used cassify image into the required label breed. Adding a dropout between the dense layers decreases the chances of overfitting.</p>
+<p>It is a good practice to start with pretrained models as the weights are already close to the optimal weights required, and hence these newely developed models produce more accuracy. I decided to pool the output of InceptionV3 and add two fully connected layers because they can be used cassify image into the required label breed. Adding a dropout between the dense layers decreases the chances of overfitting.
+The metrics used to improve the model is 'accuracy' - measure of how accuracte the predictions of model are to actural prediction. This is an important metrics</p>
+
+<pre><code>    - Accuracy = (TP+TN)/(TP+FP+FN+TN)
+    - T: true, F: False, P: Positive, N: negative
+    - Accuracy tells the correct or true prediction in the data examined.</code></pre>
 
 </div>
 </div>
@@ -14761,13 +15052,14 @@ Epoch 20/20
 <h3 id="(IMPLEMENTATION)-Test-Your-Algorithm-on-Sample-Images!">(IMPLEMENTATION) Test Your Algorithm on Sample Images!<a class="anchor-link" href="#(IMPLEMENTATION)-Test-Your-Algorithm-on-Sample-Images!">&#182;</a></h3><p>Test your algorithm at least six images on your computer.  Feel free to use any images you like.  Use at least two human and two dog images.</p>
 <p><strong>Question 6:</strong> Is the output better than you expected :) ?  Or worse :( ?  Provide at least three possible points of improvement for your algorithm.</p>
 <p><strong>Answer:</strong></p>
-<p>The model has 83.4928% accuracy. It did miss some of the test images down below, but overall it does a good job for classifying breed. Some methods to increase the accuracy of model are:</p>
+<p>The model has 83.4928% accuracy which is better than VGG16 and VGG19 (tested it locally, there were some errors regarding memory limit for this notebook, couldn't test other models here). It did miss some of the test images down below, but overall it does a good job for classifying breed. Some methods to increase the accuracy of model are:</p>
 
 <pre><code>* Increase the number of epochs
 * Increase the data size, and put equal amount of images for each class
 * Use another pretrained network, or another architecture
 * Tune the hyperparameters
-* Use a Deep neural network for testing if there is a face or dog</code></pre>
+* Use a Deep neural network for testing if there is a face or dog
+* If we continue to use my model, I will increase the number of data samples using ImageDataGenerator and train again. I will also increase the number of epochs and play with dropout values. Additionally, I will try to train the last layer of Inception V3, which is very sensitive to the object we are detecting (in this case dogs). Training last or last two layers is a common practice in computer vision.</code></pre>
 
 </div>
 </div>
